@@ -1,0 +1,78 @@
+@AllArgsConstructor
+@NoArgsConstructor
+@RequiredArgsConstructor
+
+
+-These are annotations commonly used in Java for constructors when working with libraries like Lombok to generate boilerplate code.
+
+1) @AllArgsConstructor: 
+-Lombok annotation that generates a constructor with arguments for all fields in the class.
+
+2) @NoArgsConstructor: 
+Lombok annotation that generates a constructor with no arguments.
+
+3) @RequiredArgsConstructor: 
+-Lombok annotation that generates a constructor with arguments for all fields that are marked as @NonNull or as final.
+
+EXAMPLE :
+
+Code without using lambok:
+
+	public class Person {
+	    private String firstName;
+	    private String lastName;
+	    private int age;
+
+	    public Person() {
+		// Default constructor with no arguments
+	    }
+
+	    public Person(String firstName, String lastName, int age) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+	    }
+
+	    // Getters and setters
+	    public String getFirstName() {
+		return firstName;
+	    }
+
+	    public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	    }
+
+	    public String getLastName() {
+		return lastName;
+	    }
+
+	    public void setLastName(String lastName) {
+		this.lastName = lastName;
+	    }
+
+	    public int getAge() {
+		return age;
+	    }
+
+	    public void setAge(int age) {
+		this.age = age;
+	    }
+	}
+
+Same code with using Lombok Annotations :
+
+	import lombok.AllArgsConstructor;
+	import lombok.NoArgsConstructor;
+	import lombok.RequiredArgsConstructor;
+
+	@AllArgsConstructor
+	@NoArgsConstructor
+	@RequiredArgsConstructor
+	public class Person {
+	    private String firstName;
+	    private String lastName;
+	    private int age;
+	}
+
+
+
