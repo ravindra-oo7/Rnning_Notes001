@@ -1,0 +1,240 @@
+typedef : 
+
+In C++, the typedef keyword is used to create an alias for an existing data type.
+This can be particularly useful for creating more readable and maintainable code, 
+especially when dealing with complex data types or when you want to make your code more abstract.
+
+#include <iostream>
+
+// Define a typedef for int
+typedef int myInteger;
+
+int main() {
+    // Use the typedef
+    myInteger x = 5;
+
+    // Output the value
+    std::cout << "Value of x: " << x << std::endl;
+
+    return 0;
+}
+
+In this example, myInteger is an alias for the int data type. 
+The use of typedef allows you to create a more meaningful name for the data type you are working with.
+
+======================================================================================
+
+Reference is internally considered as constant pointer hence referent of reference must be variable/object.
+
+eg.	int &num2 = num1; // OK
+	
+	int &num2 = 10; //NOT OK can not create reference to constant value
+
+====================================================================================
+In C++, we can pass argument to the function using 3 ways:
+1. By Value
+2. By Address
+3. By Reference
+
+1. Pass by Value:
+When you pass an argument by value, a copy of the actual parameter is created and passed to the function.
+Any modifications made to the parameter inside the function do not affect the original value.	
+
+code...
+
+#include <iostream>
+
+// Function to increment a value passed by value
+void incrementByValue(int x) {
+    x++;
+    std::cout << "Inside function: " << x << std::endl;
+}
+
+int main() {
+    int num = 10;
+
+    // Call the function with a value
+    incrementByValue(num);
+
+    // Original value remains unchanged
+    std::cout << "Outside function: " << num << std::endl;
+
+    return 0;
+}
+
+Output:-
+	Inside function: 11
+	Outside function: 10
+
+2. Pass by Address:
+When you pass an argument by address, you pass the memory address of the actual parameter. 
+This allows the function to directly manipulate the value at that memory location.
+
+code...
+
+#include <iostream>
+
+// Function to increment a value passed by address
+void incrementByAddress(int *x) {
+    (*x)++;
+    std::cout << "Inside function: " << *x << std::endl;
+}
+
+int main() {
+    int num = 10;
+
+    // Call the function with the address of the variable
+    incrementByAddress(&num);
+
+    // The original value is modified
+    std::cout << "Outside function: " << num << std::endl;
+
+    return 0;
+}
+
+Output:-
+	Inside function: 11
+	Outside function: 11
+
+3. Pass by Reference:
+When you pass an argument by reference, you essentially create an alias for the actual parameter inside the function. 
+Any changes made to the parameter inside the function directly affect the original value.
+
+code...
+
+#include <iostream>
+
+// Function to increment a value passed by reference
+void incrementByReference(int &x) {
+    x++;
+    std::cout << "Inside function: " << x << std::endl;
+}
+
+int main() {
+    int num = 10;
+
+    // Call the function with a reference to the variable
+    incrementByReference(num);
+
+    // The original value is modified
+    std::cout << "Outside function: " << num << std::endl;
+
+    return 0;
+}
+
+output:
+	Inside function: 11
+	Outside function: 11
+=====================================================================================
+Association:
+
+• If has-a relationship exist between two types then we should use association.
+	
+1) Composition:
+• If dependency object do not exist without Dependant object then it represents composition.
+• Composition represents tight coupling.
+
+code...
+
+class Heart{
+
+ };
+ 
+class Human{
+
+Heart hrt;
+
+};
+
+int main( void ){
+Human h;
+return 0;
+}
+
+• Dependant Object : Human Object
+• Dependancy Object : Heart Object
+
+2) Aggregation:
+Example: Department has-a facullty.
+• If dependency object exist without Dependant object then it represents Aggregation.
+• Aggregation represents loose coupling.
+
+code...
+
+class Faculty
+{ };
+class Department
+{
+Faculty f; //Association->Aggregation
+};
+int main( void )
+{
+Department d;
+return 0;
+}
+
+• Dependant Object : Department Object
+• Dependancy Object : Faculty Object
+===============================================================================
+# Namespace contains datamember functions then what makes it different than class
+
+While both namespaces and classes in C++ can contain data members and functions, there are some key differences between them:
+
+1) Purpose and Usage:
+
+Namespace: 
+.Namespaces are primarily used for organizing code and avoiding naming conflicts. 
+.They provide a way to group related code elements together.
+
+Class: 
+.Classes, on the other hand, are used for encapsulating data and behavior. 
+.They allow you to define a blueprint for creating objects, and they support concepts like encapsulation, inheritance, and polymorphism.
+
+2) Instantiation:
+
+Namespace: 
+.You cannot create instances or objects of a namespace. 
+.Namespaces don't have constructors or destructors, and they don't provide the concept of instances.
+
+Class: 
+.Classes are designed to be instantiated. 
+.You can create objects (instances) of a class, and each object has its own set of data members and functions.
+
+3) Access Control:
+
+Namespace: 
+.Members of a namespace are not subject to access control modifiers like public, private, or protected.
+.All the members in a namespace are generally accessible from any part of the code.
+
+Class: 
+.Classes support access control, allowing you to specify the visibility of members. 
+.You can have private, protected, and public members, controlling the access to the internal state of an object.
+
+4) Object-Oriented Features:
+
+Namespace: 
+.Namespaces do not provide features such as inheritance, polymorphism, or encapsulation. 
+.They are not part of the object-oriented programming paradigm.
+
+Class: 
+.Classes are fundamental to object-oriented programming and support features like encapsulation (data hiding), inheritance, and polymorphism.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

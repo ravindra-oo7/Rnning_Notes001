@@ -1,0 +1,20 @@
+@Data Annotation:-
+
+-The @Data annotation is part of the Project Lombok library for Java. 
+-Lombok is a library that helps reduce boilerplate code in Java classes, particularly for data objects. 
+-When you annotate a class with @Data, Lombok generates code for you, including getters, setters, equals(), hashCode(), and toString() methods, based on the fields in your class.
+
+Here's a breakdown of what the @Data annotation does:
+
+1) Getters and Setters: 
+-Lombok generates getter and setter methods for each field in the class.
+
+2) equals() and hashCode(): 
+-Lombok generates methods to compare objects based on their fields for equality (equals()) and to generate hash codes (hashCode()).
+
+3) toString(): 
+-Lombok creates a toString() method that includes the class name and the values of all fields.
+
+By using @Data, you can significantly reduce the amount of boilerplate code you need to write, making your code cleaner and more maintainable. 
+-However, it's important to note that while Lombok can reduce the amount of code you write, it does add a layer of abstraction, which some developers might find less transparent. 
+-Additionally, since Lombok modifies the bytecode of your classes during compilation, there could be implications for IDE support and debugging.

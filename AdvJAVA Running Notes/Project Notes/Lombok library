@@ -1,0 +1,31 @@
+Lombok:
+
+-Lombok is a Java library that aims to reduce boilerplate code in Java classes. 
+-It provides a set of annotations that you can use in your code to automatically generate common methods and reduce the amount of repetitive code you need to write. 
+
+Some of the key annotations provided by Lombok include:
+
+1) @Getter and @Setter: 
+-These annotations generate getter and setter methods for your class fields, respectively.
+
+2) @ToString: 
+-This annotation generates a toString() method for your class, which returns a string representation of the object, including all its fields.
+
+3) @EqualsAndHashCode: 
+-This annotation generates equals() and hashCode() methods based on the fields of your class. 
+-It's useful for implementing the equals contract and for using objects in collections like HashSet and HashMap.
+
+4) @NoArgsConstructor, @RequiredArgsConstructor, and @AllArgsConstructor: 
+-These annotations generate constructors for your class. 
+-@NoArgsConstructor creates a constructor with no arguments, 
+-@RequiredArgsConstructor generates a constructor with arguments for all final fields, 
+-@AllArgsConstructor generates a constructor with arguments for all fields.
+
+5) @Builder: 
+-This annotation generates a builder pattern for your class, allowing you to construct objects with a fluent API.
+
+6) @Data: 
+-As mentioned earlier, this annotation is a shortcut for @Getter, @Setter, @ToString, @EqualsAndHashCode, and @RequiredArgsConstructor combined. 
+-It generates all these methods for your class.
+
+-These are just a few of the annotations provided by Lombok. There are several others, each serving a specific purpose to help you reduce boilerplate code and make your Java code more concise and readable.
