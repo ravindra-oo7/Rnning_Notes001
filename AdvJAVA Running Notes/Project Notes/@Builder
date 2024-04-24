@@ -1,0 +1,97 @@
+@Builder :
+
+-Before the introduction of the @Builder annotation, if we wanted to create a builder pattern for a Java class, we had to write a lot of boilerplate code manually. 
+-This included creating a static inner Builder class with fields corresponding to the class's fields, 
+-writing a constructor in the main class that takes the Builder as a parameter, and writing methods in the Builder class to set values for each field.
+
+Here's how you would typically implement a builder pattern without using the @Builder annotation:
+
+java code
+
+	public class Person {
+	    private String firstName;
+	    private String lastName;
+	    private int age;
+
+	    public Person() {
+		// Default constructor
+	    }
+
+	    public Person(String firstName, String lastName, int age) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+	    }
+
+	    public static class PersonBuilder {
+		private String firstName;
+		private String lastName;
+		private int age;
+
+		public PersonBuilder() {
+		    // Default constructor for the builder
+		}
+
+		public PersonBuilder firstName(String firstName) {
+		    this.firstName = firstName;
+		    return this;
+		}
+
+		public PersonBuilder lastName(String lastName) {
+		    this.lastName = lastName;
+		    return this;
+		}
+
+		public PersonBuilder age(int age) {
+		    this.age = age;
+		    return this;
+		}
+
+		public Person build() {
+		    return new Person(firstName, lastName, age);
+		}
+	    }
+
+	    // Getters and setters
+	}
+
+	// Usage:
+	Person person = new Person.PersonBuilder()
+	    .firstName("John")
+	    .lastName("Doe")
+	    .age(30)
+	    .build();
+	    
+	    
+	    
+-With the introduction of the @Builder annotation provided by Lombok, you can significantly reduce the amount of boilerplate code required to implement the builder pattern. 
+
+Here's how you would use it:
+
+java code
+
+	import lombok.Builder;
+
+	@Builder
+	public class Person {
+	    private String firstName;
+	    private String lastName;
+	    private int age;
+
+	    // Getters and setters
+	}
+
+	// Usage:
+	Person person = Person.builder()
+	    .firstName("John")
+	    .lastName("Doe")
+	    .age(30)
+	    .build();
+	    
+	    
+In this code:
+
+-The @Builder annotation generates a builder class with methods to set each field.
+-You can directly call Person.builder() to obtain an instance of the generated builder class.
+-You can chain setter methods to set values for the fields.
+-Finally, you call build() to create an instance of the Person class with the specified values.

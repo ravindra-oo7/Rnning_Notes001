@@ -1,0 +1,41 @@
+@Email:
+
+-The @Email annotation from jakarta.validation.constraints is used in Java applications, 
+-particularly with frameworks like Jakarta Bean Validation (formerly known as Java EE Bean Validation), to validate email addresses.
+
+Here's how it works:
+
+1) Validation: 
+-When you apply @Email annotation to a field, it tells the validation framework that the field must contain a valid email address.
+
+2) Format Check: 
+-The framework checks if the value of the field conforms to the standard email address format. 
+-This includes checking for the presence of "@" symbol, domain name validity, etc.
+
+3) Error Handling: 
+-If the value fails the email format check, the framework throws a validation exception. 
+-You can handle this exception according to your application's logic, such as displaying an error message to the user or logging the issue.
+
+Here's an example of how you might use @Email annotation:
+
+java code
+
+	import jakarta.validation.constraints.Email;
+	import jakarta.validation.constraints.NotBlank;
+
+	public class User {
+	    @NotBlank
+	    private String name;
+
+	    @Email
+	    private String email;
+
+	    // Constructor, getters, setters
+	}
+
+
+In this example:
+
+-The name field is annotated with @NotBlank, indicating that it must not be blank.
+-The email field is annotated with @Email, indicating that it must be a valid email address format.
+-Using @Email helps ensure that the email addresses entered by users follow a standard format, reducing errors and improving the overall quality of your application's data.

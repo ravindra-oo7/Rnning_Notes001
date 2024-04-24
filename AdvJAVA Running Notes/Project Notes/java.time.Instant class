@@ -1,0 +1,43 @@
+	package io.bytecode.ims.dto;
+
+	import lombok.AllArgsConstructor;
+	import lombok.Builder;
+	import lombok.Data;
+	import lombok.NoArgsConstructor;
+
+	import java.time.Instant;
+
+	@Data
+	@AllArgsConstructor
+	@NoArgsConstructor
+	@Builder
+	public class AuthenticationResponse {
+	    private String authenticationToken;
+	    private String refreshToken;
+	    private Instant expiresAt;
+	    private String username;
+	}
+
+
+-Provided code snippet, the Instant class is used from the java.time package. 
+-It represents a point in time, typically to nanosecond precision, independent of any particular time zone or calendar system.
+
+Here's an explanation of each field in the AuthenticationResponse class:
+
+1) authenticationToken: 
+-Represents the authentication token generated during the authentication process.
+
+2) refreshToken: 
+-Represents a token used to obtain a new authentication token when the current one expires.
+
+3) expiresAt: 
+-Represents the instant at which the authentication token expires. 
+-It's of type Instant, which is a precise point in time.
+
+4) username: 
+-Represents the username associated with the authentication response.
+
+
+-In this context, Instant is used to store the exact moment in time when the authentication token expires (expiresAt). 
+-This is a common practice in authentication systems to provide clients with information about the validity period of tokens. 
+-Using Instant ensures that the expiration time is represented accurately and is independent of time zones or calendars.

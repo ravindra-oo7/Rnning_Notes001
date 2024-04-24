@@ -1,0 +1,59 @@
+@NotNull
+@NotEmpty 
+@NotBlank
+
+@NotNull: The CharSequence, Collection, Map or Array object is not null, but can be empty.
+@NotEmpty: The CharSequence, Collection, Map or Array object is not null and size > 0.
+@NotBlank: The string is not null and the trimmed length is greater than zero.
+
+-The @NotNull, @NotEmpty and @NotBlank annotations are part of the Jakarta Bean Validation framework, 
+-which provides a set of annotations to declare constraints on JavaBean validation properties. 
+-These annotations help in validating the inputs to ensure they meet specific criteria.
+
+1) @NotEmpty:
+-This annotation checks that the annotated element (typically a field or a method parameter) is not null and its size is greater than zero.
+-It's commonly used to ensure that a collection, array, map, or string is not empty.
+
+Example usage:
+java code
+
+	@NotEmpty
+	private String name;
+	
+	
+2) @NotBlank:
+-This annotation checks that the annotated string is not null and the trimmed length is greater than zero.
+-It's particularly useful for validating text inputs where you want to ensure they contain actual characters rather than just whitespace.
+
+Example usage:
+java code
+
+	@NotBlank
+	private String email;
+
+
+-In both cases, if the annotated element fails the validation, a constraint violation will be raised, indicating that the specified condition was not met. 
+-These annotations are handy for ensuring that inputs to methods or properties adhere to certain criteria, which can be crucial for data integrity and application robustness.
+
+
+Here are a few examples:
+
+	String name = null;
+	@NotNull: false
+	@NotEmpty: false
+	@NotBlank: false
+
+	String name = "";
+	@NotNull: true
+	@NotEmpty: false
+	@NotBlank: false
+
+	String name = "   ";//WhiteSpace
+	@NotNull: true
+	@NotEmpty: true
+	@NotBlank: false
+
+	String name = "Great answer!";
+	@NotNull: true
+	@NotEmpty: true
+	@NotBlank: true
