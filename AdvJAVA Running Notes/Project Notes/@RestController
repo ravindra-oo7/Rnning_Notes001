@@ -1,0 +1,45 @@
+@RestController
+
+
+-The @RestController annotation is a special type of stereotype annotation in Spring MVC framework, 
+-which is used to mark a class as a controller where methods return data instead of rendering a view.
+
+Here's what it does:
+
+1) Automatic Serialization: 
+-When a Java object is returned by a method annotated with @RestController, 
+-it will be automatically serialized into JSON or XML, depending on the configuration. 
+-This is achieved through Spring's content negotiation mechanism.
+
+2) Equivalent to @Controller + @ResponseBody: 
+-Internally, @RestController combines the behavior of both @Controller and @ResponseBody annotations. 
+-@Controller is used to mark a class as a controller in Spring MVC, and 
+-@ResponseBody is used to indicate that the return value of a method should be bound to the web response body.
+
+3) RESTful Web Services: 
+-@RestController is commonly used for building RESTful web services where HTTP requests and responses deal with representations of resources. 
+-It's an alternative to traditional controller classes where views are rendered.
+
+4) Simplified Development: 
+-By using @RestController, you can simplify the development of RESTful services as it eliminates the need for specifying @ResponseBody on each method.
+
+Java Code
+
+	@RestController
+	public class ExampleController {
+
+	    @GetMapping("/hello")
+	    public String hello() {
+		return "Hello, World!";
+	    }
+
+	    @PostMapping("/data")
+	    public ResponseEntity<String> postData(@RequestBody String data) {
+		// Process data and return appropriate response
+		return ResponseEntity.ok("Data received: " + data);
+	    }
+	}
+
+
+-In the above example, the ExampleController is annotated with @RestController, which means every method in this class that returns a value will automatically be serialized into the response body. 
+-Additionally, @GetMapping and @PostMapping annotations are used to map HTTP GET and POST requests to specific methods, respectively.
