@@ -1,5 +1,5 @@
-@CrossOrigin
-
+@CrossOrigin :
+  
 
 -The @CrossOrigin annotation in Spring is used to enable Cross-Origin Resource Sharing (CORS) for a specific controller or controller method.
 
