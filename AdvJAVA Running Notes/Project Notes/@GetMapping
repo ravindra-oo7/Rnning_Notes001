@@ -1,0 +1,44 @@
+@GetMapping :
+
+
+-The @GetMapping annotation in Spring MVC is a specialized form of the @RequestMapping annotation. 
+-It is a shortcut for mapping HTTP GET requests onto specific handler methods within a controller.
+
+Here's a breakdown of the @GetMapping annotation:
+
+1) Value: 
+-This attribute specifies the URL path or paths that the handler method will respond to. 
+-For example, @GetMapping("/example") maps GET requests with the path "/example" to the annotated method.
+
+2) Produces: 
+-This attribute specifies the media types that the handler method produces. 
+-It restricts the controller to return responses with content types that match the specified media types.
+
+3) Other attributes: 
+-Just like @RequestMapping, @GetMapping also supports attributes such as params and headers to further customize the mapping based on request parameters and headers.
+
+-The @GetMapping annotation is concise and improves the readability of the code by explicitly indicating that the annotated method handles only HTTP GET requests. 
+-It is commonly used when the controller method is intended to handle only GET requests, making the code more expressive and self-documenting.
+
+Here's an example usage of @GetMapping:
+
+java code
+
+	import org.springframework.web.bind.annotation.GetMapping;
+	import org.springframework.web.bind.annotation.RestController;
+
+	@RestController
+	public class ExampleController {
+
+	    // Handles GET requests to "/example"
+	    @GetMapping("/example")
+	    public String handleGetRequest() {
+		return "GET request handled!";
+	    }
+	}
+	
+	
+-In this example, the handleGetRequest() method is annotated with @GetMapping("/example"), indicating that it handles HTTP GET requests to the "/example" path.
+
+
+

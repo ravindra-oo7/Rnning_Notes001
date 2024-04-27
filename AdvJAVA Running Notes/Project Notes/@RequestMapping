@@ -1,0 +1,82 @@
+@RequestMapping :
+
+-The @RequestMapping annotation in Spring MVC is used to map web requests onto specific handler classes and/or handler methods. 
+-It can be applied at the class level and/or method level within a controller.
+
+Here's a breakdown of the @RequestMapping annotation:
+
+1) Value: 
+-This attribute specifies one or more URL paths that the controller handles. 
+-For example, @RequestMapping("/admin") maps requests with the path "/admin" to methods in the controller.
+
+2) Method: 
+-This attribute specifies the HTTP request methods (GET, POST, PUT, DELETE, etc.) supported by the handler method. 
+-By default, if not specified, it handles all HTTP methods. 
+-For example, @RequestMapping(value = "/admin", method = RequestMethod.GET) restricts the handler method to only handle GET requests.
+
+3) Consumes: 
+-This attribute specifies the media types that the controller can consume. 
+-It restricts the controller to handle only requests that have a content type that matches the specified media types.
+
+4) Produces: 
+-This attribute specifies the media types that the controller can produce. 
+-It restricts the controller to return responses with content types that match the specified media types.
+
+5) Params: 
+-This attribute specifies the parameters that must be present in the request URL for the handler method to be invoked.
+
+6) Headers: 
+-This attribute specifies the headers that must be present in the request for the handler method to be invoked.
+
+7) Other attributes: 
+-There are several other attributes available in @RequestMapping that allow for more fine-grained control over request mapping, such as headers, params, consumes, and produces.
+
+-In the provided code, @RequestMapping("/admin") is used at the class level to map all requests starting with "/admin" to this controller. 
+-So, any request with a path prefix of "/admin" will be handled by methods within this AdminController class. 
+-For example, a request to "/admin/all" will be handled by the getAllUsers() method.
+
+
+Java Code
+
+
+	import org.springframework.http.MediaType;
+	import org.springframework.web.bind.annotation.RequestMapping;
+	import org.springframework.web.bind.annotation.RequestMethod;
+	import org.springframework.web.bind.annotation.RestController;
+
+	@RestController
+	@RequestMapping("/example")
+	public class ExampleController {
+
+	    // Mapping a GET request with specific path and produces JSON response
+	    @RequestMapping(value = "/get", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	    public String getExample() {
+		return "GET request handled!";
+	    }
+
+	    // Mapping a POST request with consumes and produces specified
+	    @RequestMapping(value = "/post", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
+	    public String postExample() {
+		return "POST request handled!";
+	    }
+
+	    // Mapping a PUT request with specific path and request parameters
+	    @RequestMapping(value = "/put", method = RequestMethod.PUT, params = "param=value")
+	    public String putExample() {
+		return "PUT request with parameter handled!";
+	    }
+
+	    // Mapping a DELETE request with specific path and request header
+	    @RequestMapping(value = "/delete", method = RequestMethod.DELETE, headers = "key=value")
+	    public String deleteExample() {
+		return "DELETE request with header handled!";
+	    }
+	}
+
+
+
+
+
+
+
+
